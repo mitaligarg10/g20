@@ -1,6 +1,8 @@
  /* Importing Modules*/
   const readline = require('readline');
   const fs = require('fs');
+   let log4js = require('log4js');
+  let logger = log4js.getLogger();
   /*  Variable decleration*/
   let dataOne = [];
   let i = 0;
@@ -11,7 +13,7 @@
   let countryIndex;
   let populationIndex;
   let gdpIndex;
-  /*  functions to validate start year*/
+ /*  functions to validate start year*/
   module.exports = function convert(startYear)
   {
   if(typeof startYear === 'string') {
@@ -53,6 +55,8 @@ push the split data into array*/
       /*  Sorting in descending order*/
        a.sort(function(x, y) {return parseFloat(y.gdp) - parseFloat(x.gdp);});
       b.sort(function(x, y) {return parseFloat(y.population) - parseFloat(x.population);});
+      logger.debug(a);
+       logger.debug(b);
    /* Creating the JSON*/
       aJson = JSON.stringify(a);
       bJson = JSON.stringify(b);
